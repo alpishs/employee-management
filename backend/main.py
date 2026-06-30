@@ -28,7 +28,10 @@ def home():
 
 @app.get("/employees", response_model=list[schemas.EmployeeResponse])
 def get_employees(db: Session = Depends(get_db)):
-    return crud.get_employees(db)
+    print("GET /employees called")
+    employees = crud.get_employees(db)
+    print(employees)
+    return employees
 
 
 @app.post("/employees", response_model=schemas.EmployeeResponse)
